@@ -14,7 +14,13 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private Row[] rows;
 
-
+    public void Awake()
+    {
+        stopButton.onClick.AddListener(StopSpinning);
+        row_0.text = "0";
+        row_1.text = "0";
+        row_2.text = "0";
+    }
 
 
     public bool IsSpinning
@@ -25,6 +31,11 @@ public class GameController : MonoBehaviour
         }
     }
 
-
+    void StopSpinning()
+    {
+        rows[0].StopRotating(int.Parse(row_0.text));
+        rows[1].StopRotating(int.Parse(row_1.text));
+        rows[2].StopRotating(int.Parse(row_2.text));
+    }
     
 }
